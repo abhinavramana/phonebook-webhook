@@ -35,9 +35,7 @@ WebhookPayload: The main payload model which uses the union of the above payload
 
 POST /accept_webhook: Accepts webhook notifications and processes them based on the payload type. It updates an in-memory data store (user_data_store) to reflect the current state of each person's name.
 GET /get_name: Accepts a person's ID as a query string parameter and returns the person's most up-to-date name.
-In-memory Data Store:
 
-A simple dictionary (user_data_store) to store and manage the user data based on their UUID.
 
 **Flask Application:**
 
