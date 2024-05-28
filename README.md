@@ -3,7 +3,10 @@ A system that is capable of accepting webhooks with updates to a person's name f
 
 ## To run the project
 Create a virtual environment and install the dependencies
-
+```bash
+python -m venv tutorial-env
+source tutorial-env/bin/activate
+```
 **Running backend**
 ```bash
 pip install -r requirements.txt
