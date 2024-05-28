@@ -35,3 +35,8 @@ class PayloadType(str, Enum):
 class WebhookPayload(BaseModel):
     payload_type: PayloadType
     payload_content: Union[PersonAdded, PersonRenamed, PersonRemoved]
+
+
+class Person(BaseModel):
+    person_id: str
+    current_name: str

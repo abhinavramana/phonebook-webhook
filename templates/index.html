@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonebook Query</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="ui container">
+        <h2 class="ui header">Phonebook Query Interface</h2>
+        <form class="ui form" id="query-form">
+            <div class="field">
+                <label>Enter your query:</label>
+                <input type="text" name="query" placeholder="e.g., What is the current name of person ID: 05bf9399-f9ec-416e-822d-35ec8d2085a9?">
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+        </form>
+        <div class="ui segment" id="response-segment" style="margin-top: 20px; display: none;">
+            <h3 class="ui header">Response:</h3>
+            <p id="response-message"></p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#query-form').submit(function(event) {
+                event.preventDefault();
+                var query = $('input[name="query"]').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/query',
+                    data: { query: query },
+                    success: function(response) {
+                        $('#response-segment').show();
+                        $('#response-message').text(response.message);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

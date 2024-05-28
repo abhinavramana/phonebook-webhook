@@ -2,8 +2,9 @@ from uuid import UUID
 
 from fastapi import HTTPException
 
-from db_operations import add_person, rename_person, remove_person, get_current_name, get_name_history
-from network_models import WebhookPayload, PayloadType, PersonAdded, PersonRenamed, PersonRemoved, GetNameResponse
+from db_operations import add_person, rename_person, remove_person, get_current_name, get_name_history, get_all_persons
+from network_models import WebhookPayload, PayloadType, GetNameResponse, \
+    Person
 
 # In-memory data store
 user_data_store = {}
@@ -39,5 +40,13 @@ def retrieve_name_history(person_id: UUID):
     try:
         history = get_name_history(str(person_id))
         return history
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def retrieve_all_persons():
+    try:
+        persons = get_all_persons()
+        return [Person(person_id=person[0], current_name=person[1]) for person in persons]
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
