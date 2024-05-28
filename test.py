@@ -55,7 +55,7 @@ class PhonebookDummyDataGenerator:
 
 # Function to send payload to the FastAPI endpoint
 def send_payload_to_fastapi(payload):
-    url = "http://localhost:8000/accept_webhook"
+    url = "http://localhost:8110/accept_webhook"
     response = requests.post(url, json=payload)
     if response.status_code == 200:
         print("Payload processed successfully")

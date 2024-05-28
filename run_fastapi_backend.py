@@ -40,4 +40,4 @@ async def get_all_persons():
 # Run the application (only for testing purposes, remove if using in production)
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8110)

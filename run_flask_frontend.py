@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-FASTAPI_URL = "http://localhost:8000"
+FASTAPI_URL = "http://localhost:8110"
 
 
 @app.route('/')
@@ -65,4 +65,4 @@ def get_all_persons():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=8112)
