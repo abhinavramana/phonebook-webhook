@@ -5,6 +5,9 @@ from typing import Union, Optional
 from uuid import UUID
 
 
+PUBLIC_ACCESSIBLE_LOCALHOST = '0.0.0.0'
+
+
 class GetNameResponse(BaseModel):
     name: Optional[str] = None
 

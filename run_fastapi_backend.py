@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import FastAPI, Query
 
 from db_operations import init_db
-from network_models import WebhookPayload, GetNameResponse, Person
+from network_models import WebhookPayload, GetNameResponse, Person, PUBLIC_ACCESSIBLE_LOCALHOST
 from phonebook_service import accept_person_updates, retrieve_name, retrieve_name_history, retrieve_all_persons
 
 print("Initialize DB before the app starts...")
@@ -40,4 +40,4 @@ async def get_all_persons():
 # Run the application (only for testing purposes, remove if using in production)
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8110)
+    uvicorn.run(app, host=PUBLIC_ACCESSIBLE_LOCALHOST, port=8110)

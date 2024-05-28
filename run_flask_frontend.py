@@ -1,6 +1,8 @@
 from flask import Flask, request, render_template, jsonify
 import requests
 
+from network_models import PUBLIC_ACCESSIBLE_LOCALHOST
+
 app = Flask(__name__)
 
 FASTAPI_URL = "http://localhost:8110"
@@ -65,4 +67,4 @@ def get_all_persons():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8112)
+    app.run(debug=True, port=8112, host=PUBLIC_ACCESSIBLE_LOCALHOST)
