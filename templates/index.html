@@ -19,7 +19,7 @@
         </form>
         <div class="ui segment" id="response-segment" style="margin-top: 20px; display: none;">
             <h3 class="ui header">Response:</h3>
-            <p id="response-message"></p>
+            <div id="response-message"></div>
         </div>
     </div>
 
@@ -34,7 +34,17 @@
                     data: { query: query },
                     success: function(response) {
                         $('#response-segment').show();
-                        $('#response-message').text(response.message);
+                        if (query.toLowerCase().includes("get all persons")) {
+                            var persons = response.persons;
+                            var tableHtml = '<table class="ui celled table"><thead><tr><th>Person ID</th><th>Current Name</th></tr></thead><tbody>';
+                            persons.forEach(function(person) {
+                                tableHtml += '<tr><td>' + person.person_id + '</td><td>' + person.current_name + '</td></tr>';
+                            });
+                            tableHtml += '</tbody></table>';
+                            $('#response-message').html(tableHtml);
+                        } else {
+                            $('#response-message').text(response.message);
+                        }
                     }
                 });
             });

@@ -59,8 +59,7 @@ def get_all_persons():
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
-        persons_list = "\n".join([f"{person['person_id']}: {person['current_name']}" for person in data])
-        return {"message": f"All persons:\n{persons_list}"}
+        return {"persons": data}
     else:
         return {"message": f"Failed to fetch all persons: {response.status_code}, {response.text}"}
 
